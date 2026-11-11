@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: ers-financas
+    runtime: node
+    buildCommand: npm ci && npm run build:web
+    startCommand: npm run serve:web
+    envVars:
+      - key: NODE_VERSION
+        value: 24

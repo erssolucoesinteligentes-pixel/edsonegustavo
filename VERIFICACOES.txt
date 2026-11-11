@@ -1,0 +1,23 @@
+Verificações da entrega • 11/11/2026
+
+Original: npm test, 126 testes aprovados.
+Final: npm test, 132 testes aprovados em 17 arquivos.
+npm run typecheck: aprovado.
+npm run lint: aprovado, sem erros ou avisos.
+npm run build:web: concluído, 73 recursos no precache.
+npm run test:web: dois testes adicionais aprovados.
+npm ci --ignore-scripts --dry-run: aprovado após regenerar lockfile.
+patch-package: expo-sqlite@58.0.15 aplicado com sucesso.
+EXPO_OFFLINE=1 CI=1 expo install --check: dependências compatíveis segundo metadados locais; validação online indisponível por timeout do proxy.
+
+npm audit --omit=dev --json: cinco entradas moderadas, zero altas/críticas no retorno de 11/11/2026. Os pacotes sinalizados são expo, @expo/cli, @expo/fingerprint, glob e minimatch (cadeias de dois avisos transitivos de ferramentas). Relatório integral em npm-audit-producao.json. Não significa cinco explorações independentes. Não foi aplicado npm audit fix --force: o comando propõe downgrade para Expo 52, incompatível com este projeto SDK 58. Avaliar atualização compatível do SDK e da cadeia de build antes da distribuição nativa.
+
+Avisos:
+https://github.com/advisories/GHSA-3g3m-2fjr-6pw4
+https://github.com/advisories/GHSA-g3hv-75wg-m249
+
+Navegador gráfico: tentativa de inicialização bloqueada por restrição de socket do ambiente. Não houve inspeção visual nem instalação PWA em hardware.
+Supabase real: não acessado. PostgreSQL/PGlite com Auth simulado e RLS exercitados pelos testes.
+APK/IPA/biometria/notificações: não compilados nem executados em dispositivo.
+
+Revisão 3.0.2: prefixo Supabase fin_ em gerador SQL, adaptador remoto e testes. Suite de 132 testes e dois testes web aprovada novamente. TypeScript, lint e build aprovados. Teste adicional de migração do prefixo anterior preservando registros executado separadamente.
